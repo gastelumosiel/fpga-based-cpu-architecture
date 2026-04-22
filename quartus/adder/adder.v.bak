@@ -1,0 +1,12 @@
+// Programa de sumador
+
+module adder (
+input a0, b0, Cin // Declaracion variables
+
+output s0,s1); // s0 = salida
+					// s1 = carry out
+
+assign s0 = a0 ^ b0 ^ Cin;
+assign s1 = (a0 & Cin) | (b0 & Cin) | (a0 & b0);
+
+endmodule
