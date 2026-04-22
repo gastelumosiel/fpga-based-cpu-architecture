@@ -1,0 +1,22 @@
+|comparador
+x1 => b1_sig.IN0
+x1 => a1_sig.IN0
+x2 => b2_sig.IN0
+x2 => a2_sig.IN0
+x3 => b3_sig.IN0
+x3 => a3_sig.IN0
+x4 => b4_sig.IN0
+x4 => a4_sig.IN0
+y1 => a1_sig.IN1
+y1 => b1_sig.IN1
+y2 => a2_sig.IN1
+y2 => b2_sig.IN1
+y3 => a3_sig.IN1
+y3 => b3_sig.IN1
+y4 => a4_sig.IN1
+y4 => b4_sig.IN1
+z1 << a4_sig.DB_MAX_OUTPUT_PORT_TYPE
+z2 << z2.DB_MAX_OUTPUT_PORT_TYPE
+z3 << b4_sig.DB_MAX_OUTPUT_PORT_TYPE
+
+
