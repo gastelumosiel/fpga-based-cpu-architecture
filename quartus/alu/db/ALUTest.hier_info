@@ -1,0 +1,393 @@
+|ALUTest
+reset => Add_Sub_Sel.IN1
+reset => reg_fstate.Start.OUTPUTSELECT
+reset => reg_fstate.Add.OUTPUTSELECT
+reset => reg_fstate.Subtract.OUTPUTSELECT
+reset => reg_fstate.Mul.OUTPUTSELECT
+reset => reg_fstate.Shift.OUTPUTSELECT
+reset => reg_fstate.Add_Mul.OUTPUTSELECT
+reset => reg_fstate.End_Mul.OUTPUTSELECT
+reset => States.OUTPUTSELECT
+reset => States.OUTPUTSELECT
+reset => Sel_Multi.OUTPUTSELECT
+reset => Sel_Multi.OUTPUTSELECT
+reset => AddSub_Mul.OUTPUTSELECT
+clock => clock.IN2
+Command[0] => Equal0.IN1
+Command[0] => Equal1.IN0
+Command[0] => Equal2.IN1
+Command[0] => Equal3.IN1
+Command[1] => Equal0.IN0
+Command[1] => Equal1.IN1
+Command[1] => Equal2.IN0
+Command[1] => Equal3.IN0
+States[0] <= States.DB_MAX_OUTPUT_PORT_TYPE
+States[1] <= States.DB_MAX_OUTPUT_PORT_TYPE
+inputA[0] => inputA[0].IN1
+inputA[1] => inputA[1].IN1
+inputA[2] => inputA[2].IN1
+inputA[3] => inputA[3].IN1
+inputB[0] => addsub_input.IN0
+inputB[0] => mul_input.IN0
+inputB[1] => addsub_input.IN0
+inputB[1] => mul_input.IN0
+inputB[2] => addsub_input.IN0
+inputB[2] => mul_input.IN0
+inputB[3] => addsub_input.IN0
+inputB[3] => mul_input.IN0
+z[0] <= registro:registro_instancia.x0
+z[1] <= registro:registro_instancia.x1
+z[2] <= registro:registro_instancia.x2
+z[3] <= registro:registro_instancia.x3
+z[4] <= registro:registro_instancia.x4
+z[5] <= registro:registro_instancia.x5
+z[6] <= registro:registro_instancia.x6
+z[7] <= registro:registro_instancia.x7
+z[8] <= registro:registro_instancia.x8
+
+
+|ALUTest|contador:contador_instancia
+K <= inst.DB_MAX_OUTPUT_PORT_TYPE
+CLK => B.CLK
+CLK => A.CLK
+S0 => inst9.IN0
+S1 => inst8.IN1
+
+
+|ALUTest|registro:registro_instancia
+x0 <= BIT0.DB_MAX_OUTPUT_PORT_TYPE
+CLK => BIT0.CLK
+CLK => BIT1.CLK
+CLK => BIT2.CLK
+CLK => BIT3.CLK
+CLK => BIT4.CLK
+CLK => BIT5.CLK
+CLK => BIT6.CLK
+CLK => BIT7.CLK
+CLK => BIT8.CLK
+Control_AS => Adder_Subtractor:inst15.Control_AS
+M0 => Adder_Subtractor:inst15.A_0_AS
+M0 => Adder_Subtractor:inst1.A_0_AS
+mul0 => Adder_Subtractor:inst15.B_0_AS
+M1 => Adder_Subtractor:inst15.A_1_AS
+M1 => Adder_Subtractor:inst1.A_1_AS
+mul1 => Adder_Subtractor:inst15.B_1_AS
+M2 => Adder_Subtractor:inst15.A_2_AS
+M2 => Adder_Subtractor:inst1.A_2_AS
+mul2 => Adder_Subtractor:inst15.B_2_AS
+M3 => Adder_Subtractor:inst15.A_3_AS
+M3 => Adder_Subtractor:inst1.A_3_AS
+mul3 => Adder_Subtractor:inst15.B_3_AS
+mul_input0 => Mux10a5:inst14.Mux_M_0
+mul_input1 => Mux10a5:inst14.Mux_M_1
+mul_input2 => Mux10a5:inst14.Mux_M_2
+mul_input3 => Mux10a5:inst14.Mux_M_3
+Control_AS_M => Mux10a5:inst14.SELECT
+S0 => Mux4a1:inst.S0_Mux
+S0 => Mux4a1:inst3.S0_Mux
+S0 => Mux4a1:inst4.S0_Mux
+S0 => Mux4a1:inst5.S0_Mux
+S0 => Mux4a1:inst6.S0_Mux
+S0 => Mux4a1:inst7.S0_Mux
+S0 => Mux4a1:inst8.S0_Mux
+S0 => Mux4a1:inst9.S0_Mux
+S0 => Mux4a1:inst11.S0_Mux
+S1 => Mux4a1:inst.S1_Mux
+S1 => Mux4a1:inst3.S1_Mux
+S1 => Mux4a1:inst4.S1_Mux
+S1 => Mux4a1:inst5.S1_Mux
+S1 => Mux4a1:inst6.S1_Mux
+S1 => Mux4a1:inst7.S1_Mux
+S1 => Mux4a1:inst8.S1_Mux
+S1 => Mux4a1:inst9.S1_Mux
+S1 => Mux4a1:inst11.S1_Mux
+x1 <= BIT1.DB_MAX_OUTPUT_PORT_TYPE
+x2 <= BIT2.DB_MAX_OUTPUT_PORT_TYPE
+x3 <= BIT3.DB_MAX_OUTPUT_PORT_TYPE
+x4 <= BIT4.DB_MAX_OUTPUT_PORT_TYPE
+x5 <= BIT5.DB_MAX_OUTPUT_PORT_TYPE
+x6 <= BIT6.DB_MAX_OUTPUT_PORT_TYPE
+x7 <= BIT7.DB_MAX_OUTPUT_PORT_TYPE
+x8 <= BIT8.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ALUTest|registro:registro_instancia|Mux4a1:inst11
+MuxOut <= inst.DB_MAX_OUTPUT_PORT_TYPE
+I0_Mux => inst1.IN0
+S0_Mux => inst6.IN0
+S0_Mux => inst4.IN2
+S0_Mux => inst2.IN2
+S1_Mux => inst7.IN0
+S1_Mux => inst3.IN1
+S1_Mux => inst4.IN1
+I2_Mux => inst3.IN0
+I3_Mux => inst4.IN0
+I1_Mux => inst2.IN0
+
+
+|ALUTest|registro:registro_instancia|Mux10a5:inst14
+Mux_Out_0 <= inst12.DB_MAX_OUTPUT_PORT_TYPE
+Mux_M_0 => inst1.IN0
+SELECT => inst1.IN1
+SELECT => inst11.IN0
+SELECT => inst3.IN1
+SELECT => inst5.IN1
+SELECT => inst7.IN1
+SELECT => inst9.IN1
+Mux_AS_0 => inst.IN0
+Mux_Out_1 <= inst13.DB_MAX_OUTPUT_PORT_TYPE
+Mux_M_1 => inst3.IN0
+Mux_AS_1 => inst2.IN0
+Mux_Out_2 <= inst14.DB_MAX_OUTPUT_PORT_TYPE
+Mux_M_2 => inst5.IN0
+Mux_AS_2 => inst4.IN0
+Mux_Out_3 <= inst15.DB_MAX_OUTPUT_PORT_TYPE
+Mux_M_3 => inst7.IN0
+Mux_AS_3 => inst6.IN0
+Mux_Out_4 <= inst16.DB_MAX_OUTPUT_PORT_TYPE
+Mux_M_4 => inst9.IN0
+Mux_AS_4 => inst8.IN0
+
+
+|ALUTest|registro:registro_instancia|Adder_Subtractor:inst15
+S0_AS <= FullAdder:inst.FA_S
+A_0_AS => FullAdder:inst.FA_A
+Control_AS => inst6.IN0
+Control_AS => FullAdder:inst.FA_Cin
+Control_AS => inst7.IN0
+Control_AS => inst8.IN0
+Control_AS => inst9.IN0
+B_0_AS => inst6.IN1
+S1_AS <= FullAdder:inst3.FA_S
+A_1_AS => FullAdder:inst3.FA_A
+B_1_AS => inst7.IN1
+S2_AS <= FullAdder:inst4.FA_S
+A_2_AS => FullAdder:inst4.FA_A
+B_2_AS => inst8.IN1
+S3_AS <= FullAdder:inst5.FA_S
+A_3_AS => FullAdder:inst5.FA_A
+B_3_AS => inst9.IN1
+S4_AS <= FullAdder:inst5.FA_Cout
+
+
+|ALUTest|registro:registro_instancia|Adder_Subtractor:inst15|FullAdder:inst
+FA_S <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+FA_A => inst.IN0
+FA_A => inst3.IN0
+FA_B => inst.IN1
+FA_B => inst3.IN1
+FA_Cin => inst1.IN1
+FA_Cin => inst2.IN1
+FA_Cout <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ALUTest|registro:registro_instancia|Adder_Subtractor:inst15|FullAdder:inst3
+FA_S <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+FA_A => inst.IN0
+FA_A => inst3.IN0
+FA_B => inst.IN1
+FA_B => inst3.IN1
+FA_Cin => inst1.IN1
+FA_Cin => inst2.IN1
+FA_Cout <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ALUTest|registro:registro_instancia|Adder_Subtractor:inst15|FullAdder:inst4
+FA_S <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+FA_A => inst.IN0
+FA_A => inst3.IN0
+FA_B => inst.IN1
+FA_B => inst3.IN1
+FA_Cin => inst1.IN1
+FA_Cin => inst2.IN1
+FA_Cout <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ALUTest|registro:registro_instancia|Adder_Subtractor:inst15|FullAdder:inst5
+FA_S <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+FA_A => inst.IN0
+FA_A => inst3.IN0
+FA_B => inst.IN1
+FA_B => inst3.IN1
+FA_Cin => inst1.IN1
+FA_Cin => inst2.IN1
+FA_Cout <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ALUTest|registro:registro_instancia|Mux4a1:inst9
+MuxOut <= inst.DB_MAX_OUTPUT_PORT_TYPE
+I0_Mux => inst1.IN0
+S0_Mux => inst6.IN0
+S0_Mux => inst4.IN2
+S0_Mux => inst2.IN2
+S1_Mux => inst7.IN0
+S1_Mux => inst3.IN1
+S1_Mux => inst4.IN1
+I2_Mux => inst3.IN0
+I3_Mux => inst4.IN0
+I1_Mux => inst2.IN0
+
+
+|ALUTest|registro:registro_instancia|Mux4a1:inst8
+MuxOut <= inst.DB_MAX_OUTPUT_PORT_TYPE
+I0_Mux => inst1.IN0
+S0_Mux => inst6.IN0
+S0_Mux => inst4.IN2
+S0_Mux => inst2.IN2
+S1_Mux => inst7.IN0
+S1_Mux => inst3.IN1
+S1_Mux => inst4.IN1
+I2_Mux => inst3.IN0
+I3_Mux => inst4.IN0
+I1_Mux => inst2.IN0
+
+
+|ALUTest|registro:registro_instancia|Mux4a1:inst7
+MuxOut <= inst.DB_MAX_OUTPUT_PORT_TYPE
+I0_Mux => inst1.IN0
+S0_Mux => inst6.IN0
+S0_Mux => inst4.IN2
+S0_Mux => inst2.IN2
+S1_Mux => inst7.IN0
+S1_Mux => inst3.IN1
+S1_Mux => inst4.IN1
+I2_Mux => inst3.IN0
+I3_Mux => inst4.IN0
+I1_Mux => inst2.IN0
+
+
+|ALUTest|registro:registro_instancia|Mux4a1:inst6
+MuxOut <= inst.DB_MAX_OUTPUT_PORT_TYPE
+I0_Mux => inst1.IN0
+S0_Mux => inst6.IN0
+S0_Mux => inst4.IN2
+S0_Mux => inst2.IN2
+S1_Mux => inst7.IN0
+S1_Mux => inst3.IN1
+S1_Mux => inst4.IN1
+I2_Mux => inst3.IN0
+I3_Mux => inst4.IN0
+I1_Mux => inst2.IN0
+
+
+|ALUTest|registro:registro_instancia|Adder_Subtractor:inst1
+S0_AS <= FullAdder:inst.FA_S
+A_0_AS => FullAdder:inst.FA_A
+Control_AS => inst6.IN0
+Control_AS => FullAdder:inst.FA_Cin
+Control_AS => inst7.IN0
+Control_AS => inst8.IN0
+Control_AS => inst9.IN0
+B_0_AS => inst6.IN1
+S1_AS <= FullAdder:inst3.FA_S
+A_1_AS => FullAdder:inst3.FA_A
+B_1_AS => inst7.IN1
+S2_AS <= FullAdder:inst4.FA_S
+A_2_AS => FullAdder:inst4.FA_A
+B_2_AS => inst8.IN1
+S3_AS <= FullAdder:inst5.FA_S
+A_3_AS => FullAdder:inst5.FA_A
+B_3_AS => inst9.IN1
+S4_AS <= FullAdder:inst5.FA_Cout
+
+
+|ALUTest|registro:registro_instancia|Adder_Subtractor:inst1|FullAdder:inst
+FA_S <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+FA_A => inst.IN0
+FA_A => inst3.IN0
+FA_B => inst.IN1
+FA_B => inst3.IN1
+FA_Cin => inst1.IN1
+FA_Cin => inst2.IN1
+FA_Cout <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ALUTest|registro:registro_instancia|Adder_Subtractor:inst1|FullAdder:inst3
+FA_S <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+FA_A => inst.IN0
+FA_A => inst3.IN0
+FA_B => inst.IN1
+FA_B => inst3.IN1
+FA_Cin => inst1.IN1
+FA_Cin => inst2.IN1
+FA_Cout <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ALUTest|registro:registro_instancia|Adder_Subtractor:inst1|FullAdder:inst4
+FA_S <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+FA_A => inst.IN0
+FA_A => inst3.IN0
+FA_B => inst.IN1
+FA_B => inst3.IN1
+FA_Cin => inst1.IN1
+FA_Cin => inst2.IN1
+FA_Cout <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ALUTest|registro:registro_instancia|Adder_Subtractor:inst1|FullAdder:inst5
+FA_S <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+FA_A => inst.IN0
+FA_A => inst3.IN0
+FA_B => inst.IN1
+FA_B => inst3.IN1
+FA_Cin => inst1.IN1
+FA_Cin => inst2.IN1
+FA_Cout <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ALUTest|registro:registro_instancia|Mux4a1:inst5
+MuxOut <= inst.DB_MAX_OUTPUT_PORT_TYPE
+I0_Mux => inst1.IN0
+S0_Mux => inst6.IN0
+S0_Mux => inst4.IN2
+S0_Mux => inst2.IN2
+S1_Mux => inst7.IN0
+S1_Mux => inst3.IN1
+S1_Mux => inst4.IN1
+I2_Mux => inst3.IN0
+I3_Mux => inst4.IN0
+I1_Mux => inst2.IN0
+
+
+|ALUTest|registro:registro_instancia|Mux4a1:inst4
+MuxOut <= inst.DB_MAX_OUTPUT_PORT_TYPE
+I0_Mux => inst1.IN0
+S0_Mux => inst6.IN0
+S0_Mux => inst4.IN2
+S0_Mux => inst2.IN2
+S1_Mux => inst7.IN0
+S1_Mux => inst3.IN1
+S1_Mux => inst4.IN1
+I2_Mux => inst3.IN0
+I3_Mux => inst4.IN0
+I1_Mux => inst2.IN0
+
+
+|ALUTest|registro:registro_instancia|Mux4a1:inst3
+MuxOut <= inst.DB_MAX_OUTPUT_PORT_TYPE
+I0_Mux => inst1.IN0
+S0_Mux => inst6.IN0
+S0_Mux => inst4.IN2
+S0_Mux => inst2.IN2
+S1_Mux => inst7.IN0
+S1_Mux => inst3.IN1
+S1_Mux => inst4.IN1
+I2_Mux => inst3.IN0
+I3_Mux => inst4.IN0
+I1_Mux => inst2.IN0
+
+
+|ALUTest|registro:registro_instancia|Mux4a1:inst
+MuxOut <= inst.DB_MAX_OUTPUT_PORT_TYPE
+I0_Mux => inst1.IN0
+S0_Mux => inst6.IN0
+S0_Mux => inst4.IN2
+S0_Mux => inst2.IN2
+S1_Mux => inst7.IN0
+S1_Mux => inst3.IN1
+S1_Mux => inst4.IN1
+I2_Mux => inst3.IN0
+I3_Mux => inst4.IN0
+I1_Mux => inst2.IN0
+
+

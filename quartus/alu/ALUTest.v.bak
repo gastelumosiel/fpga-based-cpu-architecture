@@ -1,0 +1,164 @@
+
+`timescale 1ns/1ns
+
+module Skynet (
+    reset,clock,Command[1:0],
+    States[2:0],Sel_Multi[1:0],inputA[3:0],inputB[3:0],z[8:0]);
+
+    input reset;
+    input clock;
+    input [1:0] Command;
+	 input [3:0] inputA;
+	 input [3:0] inputB;
+    tri0 reset;
+    tri0 [1:0] Command;
+    output [2:0] States;
+    output [1:0] Sel_Multi;
+	 output [8:0] z;
+    reg [2:0] States;
+    reg [1:0] Sel_Multi;
+    reg [6:0] fstate;
+    reg [6:0] reg_fstate;
+    parameter Start=0,Add=1,Subtract=2,Mul=3;
+
+    always @(posedge clock)
+    begin
+        if (clock) begin
+            fstate <= reg_fstate;
+        end
+    end
+	 					  
+    always @(fstate or reset or Command)
+    begin
+        if (!reset) begin
+            reg_fstate <= Start;
+            States <= 3'b000;
+            Sel_Multi <= 2'b00;
+        end
+        else begin
+            States <= 3'b000;
+            Sel_Multi <= 2'b00;
+            case (fstate)
+                Start: begin
+                    if (Command[1:0] == 2'b00)
+                        reg_fstate <= Add;
+                    else if (Command[1:0] == 2'b01)
+                        reg_fstate <= Subtract;
+                    else if (Command[1:0] == 2'b11)
+                        reg_fstate <= Start;
+                    else if (Command[1:0] == 2'b10)
+                        reg_fstate <= Mul;
+                    // Inserting 'else' block to prevent latch inference
+                    else
+                        reg_fstate <= Start;
+
+                    States <= 3'b000;
+
+                    Sel_Multi <= 2'b11;
+                end
+                Add: begin
+                    if (Command[1:0] == 2'b00)
+                        reg_fstate <= Add;
+                    else if (Command[1:0] == 2'b11)
+                        reg_fstate <= Start;
+                    // Inserting 'else' block to prevent latch inference
+                    else
+                        reg_fstate <= Add;
+
+                    States <= 3'b011;
+
+                    Sel_Multi <= 2'b01;
+						  
+						  ADDSUB_sel <= 1'b0;
+						  
+						  AddSub_Mul <= 1'b1;
+                end
+                Subtract: begin
+                    if ((((Command[1:0] == 2'b01) & ((M_Mul == 1'b1) | (M_Mul == 1'b0))) & ((K_Mul == 1'b1) | (K_Mul == 1'b0))))
+                        reg_fstate <= Subtract;
+                    else if ((((Command[1:0] == 2'b11) & ((M_Mul == 1'b1) | (M_Mul == 1'b0))) & ((K_Mul == 1'b1) | (K_Mul == 1'b0))))
+                        reg_fstate <= Start;
+                    // Inserting 'else' block to prevent latch inference
+                    else
+                        reg_fstate <= Subtract;
+
+                    States <= 3'b101;
+
+                    Sel_Multi <= 2'b01;
+						  
+						  ADDSUB_sel <= 1'b1;
+						  
+						  AddSub_Mul <= 1'b1;
+                end
+                Shift: begin
+                    if ((K_Mul == 1'b0))
+                        reg_fstate <= Mul;
+                    else if ((K_Mul == 1'b1))
+                        reg_fstate <= End_Mul;
+                    // Inserting 'else' block to prevent latch inference
+                    else
+                        reg_fstate <= Shift;
+
+                    States <= 3'b010;
+
+                    Sel_Multi <= 2'b10;
+						  
+						  ADDSUB_sel <= 1'b0;
+						  
+						  AddSub_Mul <= 1'b0;
+                end
+                Mul: begin
+                    if ((M_Mul == 1'b1))
+                        reg_fstate <= Add_Mul;
+                    else if ((M_Mul == 1'b0))
+                        reg_fstate <= Shift;
+                    // Inserting 'else' block to prevent latch inference
+                    else
+                        reg_fstate <= Mul;
+
+                    States <= 3'b001;
+
+                    Sel_Multi <= 2'b00;
+						  
+						  ADDSUB_sel <= 1'b0;
+						  
+						  AddSub_Mul <= 1'b0;
+                end
+                Add_Mul: begin
+                    reg_fstate <= Shift;
+
+                    States <= 3'b100;
+
+                    Sel_Multi <= 2'b01;
+						  
+						  ADDSUB_sel <= 1'b0;
+						  
+						  AddSub_Mul <= 1'b0;
+                end
+                End_Mul: begin
+                    if ((((Command[1:0] == 2'b11) & ((M_Mul == 1'b1) | (M_Mul == 1'b0))) & ((K_Mul == 1'b1) | (K_Mul == 1'b0))))
+                        reg_fstate <= Start;
+                    // Inserting 'else' block to prevent latch inference
+                    else
+                        reg_fstate <= End_Mul;
+
+                    States <= 3'b110;
+
+                    Sel_Multi <= 2'b11;
+						  
+						  ADDSUB_sel <= 1'b0;
+						  
+						  AddSub_Mul <= 1'b0;
+                end
+                default: begin
+                    States <= 3'bxxx;
+                    Sel_Multi <= 2'bxx;
+                    $display ("Reach undefined state");
+                end
+            endcase
+        end
+    end
+	 
+	 
+										  
+endmodule // Skynet

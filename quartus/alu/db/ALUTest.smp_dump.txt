@@ -1,0 +1,10 @@
+
+State Machine - |ALUTest|fstate
+Name fstate.End_Mul fstate.Add_Mul fstate.Shift fstate.Mul fstate.Subtract fstate.Add fstate.Start 
+fstate.Start 0 0 0 0 0 0 0 
+fstate.Add 0 0 0 0 0 1 1 
+fstate.Subtract 0 0 0 0 1 0 1 
+fstate.Mul 0 0 0 1 0 0 1 
+fstate.Shift 0 0 1 0 0 0 1 
+fstate.Add_Mul 0 1 0 0 0 0 1 
+fstate.End_Mul 1 0 0 0 0 0 1 

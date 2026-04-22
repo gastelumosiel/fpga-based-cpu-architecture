@@ -1,0 +1,101 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "States[0]",
+					"strict" : false
+				},
+				{
+					"name" : "States[1]",
+					"strict" : false
+				},
+				{
+					"name" : "z[0]",
+					"strict" : false
+				},
+				{
+					"name" : "z[1]",
+					"strict" : false
+				},
+				{
+					"name" : "z[2]",
+					"strict" : false
+				},
+				{
+					"name" : "z[3]",
+					"strict" : false
+				},
+				{
+					"name" : "z[4]",
+					"strict" : false
+				},
+				{
+					"name" : "z[5]",
+					"strict" : false
+				},
+				{
+					"name" : "z[6]",
+					"strict" : false
+				},
+				{
+					"name" : "z[7]",
+					"strict" : false
+				},
+				{
+					"name" : "z[8]",
+					"strict" : false
+				},
+				{
+					"name" : "reset",
+					"strict" : false
+				},
+				{
+					"name" : "Command[0]",
+					"strict" : false
+				},
+				{
+					"name" : "Command[1]",
+					"strict" : false
+				},
+				{
+					"name" : "clock",
+					"strict" : false
+				},
+				{
+					"name" : "inputB[0]",
+					"strict" : false
+				},
+				{
+					"name" : "inputA[0]",
+					"strict" : false
+				},
+				{
+					"name" : "inputB[1]",
+					"strict" : false
+				},
+				{
+					"name" : "inputA[1]",
+					"strict" : false
+				},
+				{
+					"name" : "inputB[2]",
+					"strict" : false
+				},
+				{
+					"name" : "inputA[2]",
+					"strict" : false
+				},
+				{
+					"name" : "inputB[3]",
+					"strict" : false
+				},
+				{
+					"name" : "inputA[3]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}
